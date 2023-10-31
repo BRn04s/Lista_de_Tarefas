@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tarefa 4</title>
+</head>
+
+<body>
+  <h1>Avaliação</h1>
+  <div id="avaliacao"></div>
+  <div id="total"></div>
+
+  <script>
+    let totalAlunos = 70;
+    let alunosAprovados = 0;
+    let alunosReprovados = 0;
+    let maiorMedia = 0;
+    let menorMedia = 10;
+    let mediaAlunos = 0;
+
+    let pergunta = Number(prompt("Deseja registrar a avalição de um aluno? \n [0]- Não \n [1] - Sim "));
+
+    while (pergunta == 1) {
+
+      for (let avaliacoes = 0; avaliacoes < totalAlunos; avaliacoes++) {
+        let matricula = Number(prompt("Digite o número da matrícula do aluno."));
+        let nota1 = Number(prompt("Digite a primeira nota"));
+        let nota2 = Number(prompt("Digite a segunda nota."));
+        let nota3 = Number(prompt("Digite a terceira nota."));
+        let aulas = Number(prompt("Digite o número de aulas frequentadas"));
+
+        let mediaAluno = ((nota1 + nota2 + nota3) / 3).toFixed(1);
+        mediaAlunos +=parseFloat(mediaAluno);
+        let frequencia = ((aulas * 100) / 32).toFixed(0);
+
+        let situacao;
+
+        if (mediaAluno >= 7 && frequencia >= 80) {
+          situacao = "Aprovado";
+          alunosAprovados++;
+        } else {
+          situacao = "Reprovado";
+          alunosReprovados++;
+        }
+
+        if (mediaAluno > maiorMedia) {
+          maiorMedia = mediaAluno;
+        }else if (mediaAluno < menorMedia) {
+          menorMedia = mediaAluno;
+        }
+
+
+        document.getElementById("avaliacao").innerHTML += "</br> <hr/>Número da matrícula: " + matricula + "</br>Média Final: " + mediaAluno + "</br>Frequência: " + frequencia + "%" + "</br>Resultado: " + situacao;
+      }
+      
+      let mediaTurma = (mediaAlunos / totalAlunos).toFixed(1);
+
+      document.getElementById("total").innerHTML = "<br> <hr/> Média da Turma: " + mediaTurma + "</br>Maior Média: " + maiorMedia + "</br>Menor Média: " + menorMedia + "</br>Alunos Aprovados: " + alunosAprovados + "<br>Alunos Reprovados: " + alunosReprovados;
+
+      pergunta = Number(prompt("Deseja registrar a avalição de mais algum aluno? \n [0]- Não \n [1] - Sim "));
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tarefa 3</title>
+</head>
+
+<body>
+  <h1>Qualidade das Peças</h1>
+  <div id="reprovadas"></div>
+  <div id="qualidade"></div>
+
+  <script>
+    let totalPecas = 400;
+    let pecaAprovada = 0;
+    let pecaReprovada = 0;
+
+    let pergunta = Number(prompt("Deseja cadastrar a qualidade das peças? \n [0]- Não \n [1] - Sim "));
+
+    while (pergunta == 1) {
+
+      for (let qualidade = 0; qualidade < totalPecas; qualidade++) {
+
+        let numPeca = Number(prompt("Digite o número da peça."));
+
+        let estadoPeca = Number(prompt("Qual é o estado da peça: \n [0] - Reprovado \n [1] - Aprovado"));
+
+        let situacao;
+
+        if (estadoPeca == 0) {
+          pecaReprovada++;
+          document.getElementById("reprovadas").innerHTML += "<br> Número da peça reprovada: " + numPeca;
+        } else{
+          pecaAprovada++;
+        } 
+          
+          document.getElementById("qualidade").innerHTML = "<br> <hr/>Quantidade de Peças Reprovadas: " + pecaReprovada + "<br>Quantidade de Peças Aprovadas: " + pecaAprovada;
+      }
+
+        pergunta = Number(prompt("Deseja cadastrar a qualidade de mais peças?? \n [0]- Não \n [1] - Sim "));
+      }
+  </script>
+</body>
+
+</html>

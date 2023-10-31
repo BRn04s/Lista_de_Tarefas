@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarefa 5</title>
+</head>
+
+<body>
+  <h1>Recrutamento</h1>
+  <div id="recrutamento"></div>
+  <div id="resultado"></div>
+
+  <script>
+    let candidatoSim = 0;
+    let candidatoNao = 0;
+    let candidatoFem = 0;
+    let candidatoMas = 0;
+    let resultado = 0;
+    let somaIdade = 0;
+    let maioresCandidato = 0;
+
+    let pergunta = Number(prompt("Deseja preencher o recrutamento de um candidato? \n [0]- Não \n [1] - Sim "));
+
+    while (pergunta == 1) {
+      let numCandidato = Number(prompt("Qual é o número do candidato?"));
+      let idadeCandidato = Number(prompt("Quantos anos você tem?"));
+      somaIdade += idadeCandidato;
+      let sexoCandidato = Number(prompt("Qual é o seu gênero? \n [0] - Feminino \n [1] - Masculino"));
+      let expeCandidato = Number(prompt("Possui experiência profissional? \n [0] - Não \n [1] - Sim"));
+
+      let situacao1;
+      let situacao2;
+      let situacao3;
+
+      if (expeCandidato === 0) {
+        situacao1 = " Candidato sem experiência";
+        candidatoNao++;
+      } else {
+        situacao1 = "Candidato com experiência";
+        candidatoSim++;
+      }
+
+      if (sexoCandidato === 0) {
+        situacao2 = "Feminino";
+        candidatoFem++;
+      } else {
+        situacao2 = "Masculino";
+        candidatoMas++;
+      }
+
+      if (idadeCandidato >= 18 && expeCandidato === 1) {
+        situacao3 = "Sim";
+        maioresCandidato++;
+      } 
+
+      resultado++;
+
+      mediaIdade = (somaIdade / resultado).toFixed(0);
+
+      document.getElementById("recrutamento").innerHTML += "</br> <hr/> Número do Candidato: " + numCandidato + "<br/> Idade: " + idadeCandidato + "<br/> Gênero: " + situacao2 + "<br/> Experiência: " + situacao1;
+
+      document.getElementById("resultado").innerHTML = "<hr/> Número total de Candidatos (as): " + resultado + "<br/> Número total de candidatas mulheres: " + candidatoFem + "<br/> Número total de candidatos homens: " + candidatoMas + "</br> Média das Idades: " + mediaIdade + "</br> Quantidade de candidatos maiores de idade e com experiência: " + maioresCandidato;
+
+      pergunta = Number(prompt("Deseja preencher o recrutamento de outro candidato? \n [0]- Não \n [1] - Sim "));
+    }
+  </script>
+</body>
+
+</html>

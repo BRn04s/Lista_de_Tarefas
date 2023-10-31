@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarefa 2</title>
+</head>
+
+<body>
+  <h1> Declaração de Impostos</h1>
+  <div id="impostos"></div>
+
+  <script>
+    let pergunta = Number(prompt("Deseja declarar imposto de um contribuinte? \n [0]- Não \n [1] - Sim "));
+
+    while (pergunta == 1) {
+
+      let nome = prompt("Digite o nome do contribuinte.");
+      let cpf = Number(prompt("Digite o número do CPF."));
+      let anual = Number(prompt("Digite o valor da renda anual."));
+      let dependentes = Number(prompt("Digite o número de dependentes."));
+
+      let rendali = anual - (dependentes * 110);
+
+      if (rendali <= 900) {
+        aliquota = "Isento de Impostos";
+      } else if (rendali <= 5000) {
+        aliquota = rendali * 0.5;
+      } else if (rendali <= 10000) {
+        aliquota = rendali * 0.10;
+      } else {
+        aliquota = rendali * 0.15;
+      }
+
+      pergunta = Number(prompt("Deseja declarar imposto de outro contribuinte? \n [0]- Não \n [1] - Sim "));
+
+      document.getElementById("impostos").innerHTML += "</br> <hr/>Nome: " + nome + "</br>CPF: " + cpf + "</br>Renda Anual: " + anual + "</br>Número de dependentes: " + dependentes + "</br>Renda Líquida: " + rendali + "</br>Alíquota: " + aliquota;
+
+    }
+  </script>
+</body>
+
+</html>
